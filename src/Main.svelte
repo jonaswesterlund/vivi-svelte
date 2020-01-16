@@ -1,9 +1,9 @@
 <script>
-  import Question from './Question.svelte';
+  import Question from "./Question.svelte";
 </script>
 
-<div class="section">
-  <Question/>
-</div>
-
-
+<section class="hero is-link is-fullheight">
+  <div class="hero-body">
+    <Question />
+  </div>
+</section>
