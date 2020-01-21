@@ -1,10 +1,10 @@
 <script>
-  import { fade } from 'svelte/transition';
+  import { fade } from "svelte/transition";
   import { questions, selectedQuestion, selectedCategories } from "../stores";
 
   const selectNewQuestion = () => {
-    let question = $selectedQuestion;
     const selectableQuestions = $questions.filter(question =>
+      (!$selectedQuestion || question.id !== $selectedQuestion.id) &&
       question.categories.every(category =>
         $selectedCategories.includes(category.name)
       )
@@ -13,39 +13,38 @@
       return;
     }
     if (selectableQuestions.length === 1) {
-      return selectableQuestions[0];
+      return ($selectedQuestion = selectableQuestions[0]);
     }
-    while (question === $selectedQuestion) {
-      question =
-        selectableQuestions[
-          Math.floor(Math.random() * selectableQuestions.length)
-        ];
-    }
-    $selectedQuestion = question;
+    $selectedQuestion = selectableQuestions[Math.floor(Math.random() * selectableQuestions.length)];
   };
 </script>
 
 <div class="section has-text-centered">
   <div class="columns is-centered">
-    {#if $selectedQuestion}
-      <div transition:fade>
-        <div>
-          <p>{$selectedQuestion.id}</p>
-          <p>{$selectedQuestion.content}</p>
-          {#each $selectedQuestion.categories as category}
-            <span>{category.name}</span>
-          {/each}
+    <div class="section">
+      <button class="button is-primary" on:click={selectNewQuestion}>
+        Ny fråga
+      </button>
+    </div>
+    <div class="section">
+      {#if $selectedQuestion}
+        <div transition:fade>
+          <div>
+            <p>{$selectedQuestion.id}</p>
+            <p>{$selectedQuestion.content}</p>
+            {#each $selectedQuestion.categories as category}
+              <span>{category.name}</span>
+            {/each}
+          </div>
+          <div class="columns">
+            {#each $selectedQuestion.answerChoices as choice}
+              <div class="column">
+                <button class="button is-primary">{choice.answer}</button>
+              </div>
+            {/each}
+          </div>
         </div>
-        <div>
-          {#each $selectedQuestion.answerChoices as choice}
-            <a href="javascript:void(0)">{choice}</a>
-          {/each}
-        </div>
-      </div>
-    {/if}
-
-    <button class="button is-primary" on:click={selectNewQuestion}>
-      Ny fråga
-    </button>
+      {/if}
+    </div>
   </div>
 </div>
