@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store'
 
-export const questions = writable();
+export const questions = writable([]);
+export const categories = writable([]);
 export const selectedQuestion = writable();
-export const selectedLabels = writable();
+export const selectedCategories = writable([]);
