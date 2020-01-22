@@ -19,15 +19,15 @@
   };
 </script>
 
+<style>
+  .set-margin {
+    margin: 20px;
+  }
+</style>
+
 <div class="section has-text-centered">
-  <div class="columns is-centered">
-    <div class="section">
-      <button class="button is-primary" on:click={selectNewQuestion}>
-        Ny fråga
-      </button>
-    </div>
-    <div class="section">
-      {#if $selectedQuestion}
+    {#if $selectedQuestion}
+    <div class="box is-block">
         <div transition:fade>
           <div>
             <p>{$selectedQuestion.id}</p>
@@ -39,12 +39,17 @@
           <div class="columns">
             {#each $selectedQuestion.answerChoices as choice}
               <div class="column">
-                <button class="button is-primary">{choice.answer}</button>
+                <button class="button is-outlined is-fullwidth">{choice.answer}</button>
               </div>
             {/each}
           </div>
         </div>
-      {/if}
     </div>
-  </div>
+    {/if}
+
+    <div class="set-margin is-block">
+      <button class="button is-primary is-fullwidth" on:click={selectNewQuestion}>
+        Ny fråga
+      </button>
+    </div>
 </div>
