@@ -1,5 +1,6 @@
 <script>
   import { categories, selectedCategories } from "../stores";
+
   const toggleCategory = name => {
     if ($selectedCategories.includes(name)) {
       $selectedCategories = $selectedCategories.filter(
