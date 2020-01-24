@@ -6,6 +6,6 @@
 </script>
 
 <Question />
-<AnswerEvaluation/>
-<NewQuestion/>
+<AnswerEvaluation />
+<NewQuestion />
 <Categories />
