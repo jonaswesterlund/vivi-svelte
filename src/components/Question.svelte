@@ -1,19 +1,17 @@
 <script>
   import { fade } from "svelte/transition";
-  import { getClient, mutate } from "svelte-apollo";
+  import axios from "axios";
   import { selectedQuestion, answerEvaluation } from "../stores";
   import { ADD_ANSWER } from "../queries";
 
   const client = getClient();
 
   const addAnswer = async id => {
-    const data = await mutate(client, {
-      mutation: ADD_ANSWER,
-      variables: {
-        addAnswerInput: { questionId: $selectedQuestion.id, answerChoiceId: id }
-      }
+    const response = await axios.post("http://localhost:3001/api/answers", {
+      questionId: $selectedQuestion.id,
+      answerChoiceId: id
     });
-    const questionEvaluation = data.data.addAnswer;
+    const questionEvaluation = response.data;
     const isCorrect = questionEvaluation.correctAnswerChoice.id === id;
     $answerEvaluation = {
       correctAnswer: isCorrect,
