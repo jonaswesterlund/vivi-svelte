@@ -7,15 +7,19 @@
   const client = getClient();
 
   const addAnswer = async id => {
-    await mutate(client, {
+    const data = await mutate(client, {
       mutation: ADD_ANSWER,
       variables: {
         addAnswerInput: { questionId: $selectedQuestion.id, answerChoiceId: id }
       }
     });
+    const questionEvaluation = data.data.addAnswer;
+    const isCorrect = questionEvaluation.correctAnswerChoice.id === id;
     $answerEvaluation = {
-      correctAnswer: false,
-      evaluation: "Tyvärr var detta inte rätt svar för att..."
+      correctAnswer: isCorrect,
+      evaluation: isCorrect
+        ? questionEvaluation.correctAnswerRationale
+        : questionEvaluation.incorrectAnswerRationale
     };
   };
 </script>

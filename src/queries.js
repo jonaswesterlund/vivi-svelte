@@ -29,7 +29,12 @@ export const GET_ALL_CATEGORIES = gql`
 export const ADD_ANSWER = gql`
   mutation($addAnswerInput: AddAnswerInput!){
     addAnswer(addAnswerInput: $addAnswerInput) {
-      id
+      id,
+      correctAnswerRationale,
+      incorrectAnswerRationale,
+      correctAnswerChoice {
+        id
+      }
     }
   }
 `;
