@@ -3,7 +3,6 @@
   import Main from "./components/Main.svelte";
   import axios from "axios";
   import { categories, questions } from "./stores";
-  import { GET_ALL_CATEGORIES, GET_ALL_QUESTIONS } from "./queries";
 
   Promise.all([
     axios.get("http://localhost:3001/api/questions"),

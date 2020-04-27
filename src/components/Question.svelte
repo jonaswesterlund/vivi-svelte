@@ -2,9 +2,6 @@
   import { fade } from "svelte/transition";
   import axios from "axios";
   import { selectedQuestion, answerEvaluation } from "../stores";
-  import { ADD_ANSWER } from "../queries";
-
-  const client = getClient();
 
   const addAnswer = async id => {
     const response = await axios.post("http://localhost:3001/api/answers", {
@@ -32,7 +29,7 @@
   {#if $selectedQuestion}
     <div class="box is-block" transition:fade>
       <div>
-        <p>{$selectedQuestion.id}</p>
+        <p>{$selectedQuestion.uuid}</p>
         <p>{$selectedQuestion.content}</p>
         {#each $selectedQuestion.categories as category}
           <span>{category.name}</span>
