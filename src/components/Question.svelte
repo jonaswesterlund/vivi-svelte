@@ -19,25 +19,21 @@
   };
 </script>
 
-<div>
-  {#if $selectedQuestion}
-    <div transition:fade>
-      <div>
-        <p>{$selectedQuestion.uuid}</p>
-        <p>{$selectedQuestion.content}</p>
-        {#each $selectedQuestion.categories as category}
-          <span>{category.name}</span>
-        {/each}
-      </div>
-      <div>
-        {#each $selectedQuestion.answerChoices as choice}
-          <div>
-            <button on:click={() => addAnswer(choice.id)}>
-              {choice.answer}
-            </button>
-          </div>
-        {/each}
-      </div>
+{#if $selectedQuestion}
+  <div class="border-2 p-4" transition:fade>
+    <div>
+      <p>{$selectedQuestion.id}</p>
+      <p>{$selectedQuestion.content}</p>
+      {#each $selectedQuestion.categories as category}
+        <span class="mr-2 font-semibold">{category.name}</span>
+      {/each}
     </div>
-  {/if}
-</div>
+    <div>
+      {#each $selectedQuestion.answerChoices as choice}
+        <div>
+          <button on:click={() => addAnswer(choice.id)}>{choice.answer}</button>
+        </div>
+      {/each}
+    </div>
+  </div>
+{/if}

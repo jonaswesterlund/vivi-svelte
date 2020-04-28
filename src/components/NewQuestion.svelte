@@ -11,7 +11,7 @@
       question =>
         (!$selectedQuestion || question.id !== $selectedQuestion.id) &&
         question.categories.every(category =>
-          $selectedCategories.includes(category.name)
+          $selectedCategories.map(c => c.id).includes(category.id)
         )
     );
     if (selectableQuestions.length === 0) {
@@ -28,8 +28,11 @@
   };
 </script>
 
-<div>
-  <div>
-    <button on:click={selectNewQuestion}>Ny fråga</button>
-  </div>
+<div class="flex justify-center m-10">
+  <button
+    class="hover:bg-blue-600 hover:text-white border-blue-600 border-2
+    rounded-md px-4 py-2 focus:outline-none"
+    on:click={selectNewQuestion}>
+    Ny fråga
+  </button>
 </div>
