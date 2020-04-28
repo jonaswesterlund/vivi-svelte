@@ -19,12 +19,6 @@
   };
 </script>
 
-<style>
-  #answerChoices {
-    margin-top: 5px;
-  }
-</style>
-
 <div>
   {#if $selectedQuestion}
     <div transition:fade>
