@@ -28,10 +28,8 @@
   };
 </script>
 
-<div class="section has-text-centered">
-  <div class="is-block">
-    <button class="button is-primary" on:click={selectNewQuestion}>
-      Ny fråga
-    </button>
+<div>
+  <div>
+    <button on:click={selectNewQuestion}>Ny fråga</button>
   </div>
 </div>

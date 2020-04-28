@@ -3,9 +3,9 @@
   import { answerEvaluation } from "../stores";
 </script>
 
-<div class="section has-text-centered">
+<div>
   {#if $answerEvaluation}
-    <div class="box is-block" transition:fade>
+    <div transition:fade>
       <div>
         <p>{$answerEvaluation.correctAnswer ? 'Rätt svar!' : 'Fel svar.'}</p>
         <p>{$answerEvaluation.evaluation}</p>

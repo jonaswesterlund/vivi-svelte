@@ -3,6 +3,7 @@
   import Main from "./components/Main.svelte";
   import axios from "axios";
   import { categories, questions } from "./stores";
+  import Tailwindcss from "./Tailwindcss.svelte";
 
   Promise.all([
     axios.get("http://localhost:3001/api/questions"),
@@ -17,6 +18,7 @@
   <title>MathDQ</title>
 </svelte:head>
 
+<Tailwindcss />
 <Router>
   <div>
     <Route path="/">

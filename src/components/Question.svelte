@@ -25,9 +25,9 @@
   }
 </style>
 
-<div class="section has-text-centered">
+<div>
   {#if $selectedQuestion}
-    <div class="box is-block" transition:fade>
+    <div transition:fade>
       <div>
         <p>{$selectedQuestion.uuid}</p>
         <p>{$selectedQuestion.content}</p>
@@ -35,12 +35,10 @@
           <span>{category.name}</span>
         {/each}
       </div>
-      <div id="answerChoices" class="columns">
+      <div>
         {#each $selectedQuestion.answerChoices as choice}
-          <div class="column">
-            <button
-              class="button is-outlined is-fullwidth"
-              on:click={() => addAnswer(choice.id)}>
+          <div>
+            <button on:click={() => addAnswer(choice.id)}>
               {choice.answer}
             </button>
           </div>
