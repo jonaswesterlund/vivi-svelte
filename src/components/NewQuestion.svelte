@@ -26,6 +26,9 @@
       ];
     $answerEvaluation = null;
   };
+  questions.subscribe(() => {
+    $selectedQuestion = $questions[0];
+  });
 </script>
 
 <div class="flex justify-center m-10">

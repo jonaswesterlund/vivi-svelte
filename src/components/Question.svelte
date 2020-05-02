@@ -20,18 +20,28 @@
 </script>
 
 {#if $selectedQuestion}
-  <div class="border-2 p-4" transition:fade>
-    <div>
-      <p>{$selectedQuestion.id}</p>
-      <p>{$selectedQuestion.content}</p>
+  <div
+    class="border-2 border-gray-600 p-4 w-1/2 mx-auto relative shadow-xl"
+    transition:fade>
+    <div class="flex mt-8">
+      <p class="text-xl font-semibold">{$selectedQuestion.content}</p>
+    </div>
+
+    <div class="absolute top-0 right-0 mt-2 mr-2">
       {#each $selectedQuestion.categories as category}
-        <span class="mr-2 font-semibold">{category.name}</span>
+        <span class="mr-4 italic text-gray-500 text-sm">{category.name}</span>
       {/each}
     </div>
-    <div>
+
+    <div class="flex flex-wrap justify-between mx-4 mt-12">
       {#each $selectedQuestion.answerChoices as choice}
-        <div>
-          <button on:click={() => addAnswer(choice.id)}>{choice.answer}</button>
+        <div class="w-1/3 mb-4 mx-4">
+          <button
+            class="w-full border-2 border-blue-600 p-2 hover:bg-blue-600
+            hover:text-white rounded"
+            on:click={() => addAnswer(choice.id)}>
+            {choice.answer}
+          </button>
         </div>
       {/each}
     </div>
