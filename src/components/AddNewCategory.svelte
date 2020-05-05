@@ -11,12 +11,6 @@
   }
 </script>
 
-<style>
-  .btn-disabled {
-    @apply border-none text-white bg-gray-500 cursor-not-allowed;
-  }
-</style>
-
 <div
   class="flex-1 align-top my-8 border-2 border-gray-600 h-48 shadow-xl p-4 mx-10">
   <div class="flex justify-between align-top">
