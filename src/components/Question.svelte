@@ -1,6 +1,7 @@
 <script>
   import { fade } from "svelte/transition";
   import axios from "axios";
+  import AnswerEvaluation from "./AnswerEvaluation.svelte";
   import { selectedQuestion, answerEvaluation } from "../stores";
 
   const addAnswer = async id => {
@@ -44,6 +45,9 @@
           </button>
         </div>
       {/each}
+    </div>
+    <div class="flex justify-center">
+      <AnswerEvaluation />
     </div>
   </div>
 {/if}

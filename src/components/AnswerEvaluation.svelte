@@ -5,7 +5,7 @@
 
 {#if $answerEvaluation}
   <div transition:fade>
-    <div class="border-2 p-4">
+    <div>
       <p>{$answerEvaluation.correctAnswer ? 'Rätt svar!' : 'Fel svar.'}</p>
       <p>{$answerEvaluation.evaluation}</p>
     </div>
