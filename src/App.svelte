@@ -1,6 +1,6 @@
 <script>
-  import { Router, Link, Route } from "svelte-routing";
-  import Main from "./components/Main.svelte";
+  import { Router } from "@sveltech/routify";
+  import { routes } from "@sveltech/routify/tmp/routes";
   import axios from "axios";
   import { categories, questions } from "./stores";
   import Tailwindcss from "./Tailwindcss.svelte";
@@ -14,15 +14,5 @@
   });
 </script>
 
-<svelte:head>
-  <title>MathDQ</title>
-</svelte:head>
-
 <Tailwindcss />
-<Router>
-  <div>
-    <Route path="/">
-      <Main />
-    </Route>
-  </div>
-</Router>
+<Router {routes} />
