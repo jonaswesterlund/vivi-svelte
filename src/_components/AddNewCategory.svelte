@@ -25,10 +25,11 @@
     </div>
   </div>
   <div>
-    <label class="font-semibold text-lg">
+    <label class="font-semibold text-lg" for="category-name">
       Namn
       <div class="my-2">
         <input
+          id="category-name"
           bind:value={categoryName}
           class="border border-gray-600 w-full rounded p-2" />
       </div>

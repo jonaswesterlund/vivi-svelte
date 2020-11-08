@@ -1,14 +1,22 @@
 <script>
+  import { onDestroy } from "svelte";
   import { fade } from "svelte/transition";
   import axios from "axios";
   import AnswerEvaluation from "./AnswerEvaluation.svelte";
   import { selectedQuestion, answerEvaluation } from "../stores";
+  let firstAnswer = true;
 
+  const unsubscribe = selectedQuestion.subscribe(() => (firstAnswer = true));
+
+  onDestroy(unsubscribe);
+  
   const addAnswer = async id => {
     const response = await axios.post("http://localhost:3001/api/answers", {
       questionId: $selectedQuestion.id,
-      answerChoiceId: id
+      answerChoiceId: id,
+      firstAnswer
     });
+    firstAnswer = false;
     const questionEvaluation = response.data;
     const isCorrect = questionEvaluation.correctAnswerChoice.id === id;
     $answerEvaluation = {
