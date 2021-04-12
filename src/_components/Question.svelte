@@ -1,17 +1,19 @@
 <script>
-  import { onDestroy } from "svelte";
-  import { fade } from "svelte/transition";
   import axios from "axios";
   import AnswerEvaluation from "./AnswerEvaluation.svelte";
-  import { selectedQuestion, answerEvaluation } from "../stores";
+  import { selectedQuestion } from "../stores";
+
   let firstAnswer = true;
+  let answerEvaluation;
 
-  const unsubscribe = selectedQuestion.subscribe(() => (firstAnswer = true));
-
-  onDestroy(unsubscribe);
+  $: {
+    $selectedQuestion;
+    firstAnswer = true;
+    answerEvaluation = null;
+  }
   
   const addAnswer = async id => {
-    const response = await axios.post("http://localhost:3001/api/answers", {
+    const response = await axios.post("http://localhost:8081/api/answers", {
       questionId: $selectedQuestion.id,
       answerChoiceId: id,
       firstAnswer
@@ -19,7 +21,7 @@
     firstAnswer = false;
     const questionEvaluation = response.data;
     const isCorrect = questionEvaluation.correctAnswerChoice.id === id;
-    $answerEvaluation = {
+    answerEvaluation = {
       correctAnswer: isCorrect,
       evaluation: isCorrect
         ? questionEvaluation.correctAnswerRationale
@@ -30,8 +32,7 @@
 
 {#if $selectedQuestion}
   <div
-    class="border-2 border-gray-600 p-4 w-1/2 mx-auto relative shadow-xl"
-    transition:fade>
+    class="border-2 border-gray-600 p-4 w-1/2 mx-auto relative shadow-xl">
     <div class="flex mt-8">
       <p class="text-xl font-semibold">{$selectedQuestion.content}</p>
     </div>
@@ -55,7 +56,7 @@
       {/each}
     </div>
     <div class="flex justify-center">
-      <AnswerEvaluation />
+      <AnswerEvaluation {answerEvaluation} />
     </div>
   </div>
 {/if}

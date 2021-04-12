@@ -4,7 +4,7 @@
   let categoryName;
 
   async function saveCategory() {
-    const response = await axios.post("http://localhost:3001/api/categories", {
+    const response = await axios.post("http://localhost:8081/api/categories", {
       categoryName
     });
     $categories = [...$categories, response.data];

@@ -16,7 +16,7 @@
   }
 
   async function saveQuestion() {
-    const response = await axios.post("http://localhost:3001/api/questions", {
+    const response = await axios.post("http://localhost:8081/api/questions", {
       content: questionContent,
       categoryIds: selectedCategories.map(c => c.id),
       answerChoices,
@@ -28,7 +28,7 @@
   }
 </script>
 
-<style>
+<style lang="postcss">
   .btn-disabled {
     @apply border-none text-white bg-gray-500 cursor-not-allowed;
   }

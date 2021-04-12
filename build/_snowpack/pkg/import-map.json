@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "axios": "./axios.js",
+    "svelte/internal": "./svelte/internal.js",
+    "svelte/store": "./svelte/store.js"
+  }
+}

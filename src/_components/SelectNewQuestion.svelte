@@ -1,6 +1,5 @@
 <script>
   import {
-    answerEvaluation,
     questions,
     selectedQuestion,
     selectedCategories
@@ -24,17 +23,12 @@
       selectableQuestions[
         Math.floor(Math.random() * selectableQuestions.length)
       ];
-    $answerEvaluation = null;
   };
-  questions.subscribe(() => {
-    $selectedQuestion = $questions[0];
-  });
 </script>
 
 <div class="flex justify-center m-10">
   <button
-    class="hover:bg-blue-600 hover:text-white border-blue-600 border-2
-    rounded-md px-4 py-2 focus:outline-none"
+    class="button"
     on:click={selectNewQuestion}>
     Ny fråga
   </button>

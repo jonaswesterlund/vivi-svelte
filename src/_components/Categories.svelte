@@ -10,9 +10,10 @@
       $selectedCategories = [...$selectedCategories, category];
     }
   };
+
 </script>
 
-<style>
+<style lang="postcss">
   .active {
     @apply bg-blue-600 text-white;
   }

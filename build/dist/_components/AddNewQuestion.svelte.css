@@ -1,0 +1,8 @@
+.btn-disabled.svelte-suqtex{
+  --tw-bg-opacity: 1;
+  background-color: rgba(107, 114, 128, var(--tw-bg-opacity));
+  border-style: none;
+  cursor: not-allowed;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
