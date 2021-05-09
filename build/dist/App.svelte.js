@@ -16,7 +16,7 @@ import {
 	transition_out
 } from "../_snowpack/pkg/svelte/internal.js";
 
-import Main from "./_components/Main.svelte.js";
+import Main from "./components/Main.svelte.js";
 import axios from "../_snowpack/pkg/axios.js";
 import { categories, questions } from "./stores.js";
 import Tailwindcss from "./Tailwindcss.svelte.js";
@@ -81,8 +81,8 @@ function create_fragment(ctx) {
 
 function instance($$self) {
 	Promise.all([
-		axios.get("http://localhost:8081/api/questions"),
-		axios.get("http://localhost:8081/api/categories")
+		axios.get("http://localhost:3001/api/questions"),
+		axios.get("http://localhost:3001/api/categories")
 	]).then(([questionsResponse, categoriesResponse]) => {
 		questions.set(questionsResponse.data);
 		categories.set(categoriesResponse.data);

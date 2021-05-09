@@ -13,7 +13,7 @@
   }
   
   const addAnswer = async id => {
-    const response = await axios.post("http://localhost:8081/api/answers", {
+    const response = await axios.post("http://localhost:3001/api/answers", {
       questionId: $selectedQuestion.id,
       answerChoiceId: id,
       firstAnswer

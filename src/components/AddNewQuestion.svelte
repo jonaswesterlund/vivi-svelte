@@ -16,7 +16,7 @@
   }
 
   async function saveQuestion() {
-    const response = await axios.post("http://localhost:8081/api/questions", {
+    const response = await axios.post("http://localhost:3001/api/questions", {
       content: questionContent,
       categoryIds: selectedCategories.map(c => c.id),
       answerChoices,
