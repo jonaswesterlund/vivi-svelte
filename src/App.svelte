@@ -2,8 +2,8 @@
   import { Router, Link, Route } from 'svelte-navigator';
   import Question from './pages/Question.svelte';
   import Edit from './pages/Edit.svelte';
+  import Sequence from './pages/Sequence.svelte';
   import AllQuestions from './pages/AllQuestions.svelte';
-  import Main from './components/Main.svelte';
   import axios from 'axios';
   import { categories, questions } from './stores';
   import Tailwindcss from './Tailwindcss.svelte';
@@ -25,7 +25,8 @@
         <Link to="/">
           <div
             class="text-center block text-blue-600 text-xl font-semibold
-            hover:text-blue-800">
+            hover:text-blue-800"
+          >
             Vivi
           </div>
         </Link>
@@ -34,7 +35,8 @@
         <Link to="edit">
           <div
             class="text-center block text-blue-600 text-xl font-semibold
-            hover:text-blue-800">
+            hover:text-blue-800"
+          >
             Edit
           </div>
         </Link>
@@ -43,7 +45,8 @@
         <Link to="all">
           <div
             class="text-center block text-blue-600 text-xl font-semibold
-            hover:text-blue-800">
+            hover:text-blue-800"
+          >
             Alla frågor
           </div>
         </Link>
@@ -59,6 +62,9 @@
     </Route>
     <Route path="all">
       <AllQuestions />
+    </Route>
+    <Route path="sequence">
+      <Sequence />
     </Route>
   </div>
 </Router>
